@@ -11,6 +11,14 @@
 <body>
 
 <h1><%= kindOfDay %></h1>
+<ul>
+
+
+  <% for(var i =0; i<newListItem.length;i++){ %>
+        <li><%= newListItem[i] %></li>      
+  <%  }                                  %>
+
+</ul>
 
 <form action="/" method="post">
 <input type="text" name="toDoList" id="">

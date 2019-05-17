@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 
+var items = ["Make food", "Eat food", "Clean dishes"];
+
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -9,8 +11,6 @@ app.set('view engine', 'ejs');
 
 app.get("/", function (req, res) {
     var today = new Date();
-    var currentDay = today.getDay();
- 
 
 var options ={
     weekday: 'long', 
@@ -21,15 +21,16 @@ var options ={
 
 var day = today.toLocaleDateString('en-US', options);
 
-    res.render('list', {
-        kindOfDay: day
-    })
+    res.render('list', {kindOfDay: day,newListItem: items})
 
     
 });
 
 app.post("/", function(req,res){
-console.log(req.body.toDoList);
+    var lists = req.body.toDoList;
+    items.push(lists);
+
+    res.redirect('/');
 })
 
 
