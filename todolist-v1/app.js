@@ -13,17 +13,10 @@ app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
+//This is the "/" section
+
 app.get("/", function (req, res) {
-    let today = new Date();
-
-    let options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
-
-    let day = today.toLocaleDateString('en-US', options);
+   
     res.render('list', {
         listTitle: day,
         newListItem: items
@@ -45,6 +38,8 @@ app.post("/", function (req, res) {
 
 });
 
+//This is the /work section
+
 app.get("/work", function (req, res) {
     res.render("list", {
         listTitle: "Work List",
@@ -58,6 +53,11 @@ app.post("/work", function (req, res) {
     res.redirect("/work")
 })
 
+//This is the about section
+
+app.get("/about",function(req,res){
+    res.render("about")
+})
 
 app.listen(3000, function () {
     console.log("The server is online on port 3000");
