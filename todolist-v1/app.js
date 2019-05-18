@@ -8,7 +8,7 @@ console.log(date);
 let items = ["Make food", "Eat food", "Clean dishes"];
 let workItems = [];
 
-let day = date.getDay();
+let day = date.getDate();
 
 const app = express();
 app.use(bodyParser.urlencoded({
