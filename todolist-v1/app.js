@@ -1,9 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const date = require('./Modules/date')
+
+console.log(date);
 
 let items = ["Make food", "Eat food", "Clean dishes"];
 let workItems = [];
+
+let day = date.getDay();
 
 const app = express();
 app.use(bodyParser.urlencoded({
